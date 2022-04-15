@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="shortcut icon" type="image/png" href="notes.png" />
+    <link href="/static/style.css" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url(https://dekornik.com/wp-content/uploads/2020/03/DEKO.TAP_.124_pack.jpg);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <form method="POST">
+
+            <textarea name="note" id="note" class="thought" placeholder="what's on your mind?">Date:</textarea>
+            </br>
+            <button type="submit" class="add-note">add note</button>
+
+
+        </form>
+    </div>
+
+    </br>
+    <div class="container " id="app">
+        <div id="notes">
+            {% for note in user.notes %}
+            <div class="thought">
+                {{ note.data }}
+                <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            </br>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+{% endblock %}
